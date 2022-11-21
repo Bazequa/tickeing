@@ -9,3 +9,6 @@ def manager(request):
     return render(request,'manager.html')
 def admin(request):
     return render(request,'admin.html')
+
+def login(request):
+    return render(request,'login.html')
