@@ -17,6 +17,13 @@ from django.contrib import admin
 from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
+<<<<<<< HEAD
     path('',include('ticketingtoolapp.urls'))
     
+=======
+    path("",views.home),
+    path("employee",views.employee,name='employee'),
+    path("manager",views.manager,name='manager'),
+    path("adminpage",views.admin,name='admin'),
+>>>>>>> c147e47373e2a6b5134d338d609dcfe42fa4e3dd
 ]
