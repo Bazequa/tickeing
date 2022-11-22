@@ -23,7 +23,6 @@ def manager(request):
     return render(request,'manager.html')
 def admin(request):
     return render(request,'admin.html')
-<<<<<<< HEAD
 def products(request):
     if request.method=='POST':
         fm=ProductForm(request.POST)
@@ -43,8 +42,6 @@ def booking(request):
         fm=BookingForm()
     return render(request,'booking.html',{'form':fm})
 
-=======
 
 def login(request):
     return render(request,'login.html')
->>>>>>> ea5ccdeef800799cad01859117770b7fe74ab5a6
