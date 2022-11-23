@@ -18,4 +18,8 @@ from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('ticketingtoolapp.urls'))
+<<<<<<< HEAD
 ]
+=======
+] 
+>>>>>>> 1f6d5f4364bed3e7548ac19bf8ed6826a19c2c69

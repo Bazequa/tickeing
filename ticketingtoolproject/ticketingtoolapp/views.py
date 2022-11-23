@@ -1,7 +1,13 @@
 from django.shortcuts import render,HttpResponseRedirect
+<<<<<<< HEAD
 from .forms import LoginForm, SelectType,ProductForm,ApplicationForm,BookingForm, SignUpForm
 from .models import ProductModel,ApplicationModel,BookingModel
 from django.contrib.auth import authenticate, login, logout
+=======
+from .forms import SelectType,ProductForm,ApplicationForm,BookingForm,SignUpForm
+from .models import ProductModel,ApplicationModel,BookingModel
+
+>>>>>>> 1f6d5f4364bed3e7548ac19bf8ed6826a19c2c69
 from django.contrib import messages
 # Create your views here.
 def home(request):
@@ -25,7 +31,10 @@ def manager(request):
     return render(request,'manager.html')
 def admin(request):
     return render(request,'admin.html')
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1f6d5f4364bed3e7548ac19bf8ed6826a19c2c69
 def products(request):
     if request.method=='POST':
         fm=ProductForm(request.POST)
@@ -45,3 +54,22 @@ def booking(request):
         fm=BookingForm()
     return render(request,'booking.html',{'form':fm})
 
+<<<<<<< HEAD
+=======
+
+def login(request):
+    return render(request,'login.html')
+
+
+def signup(request):
+    if request.method == "POST":
+        fm = SignUpForm(request.POST)
+        if fm.is_valid():
+            messages.success(request, 'Account Created Successfully !!') 
+            user = fm.save()
+    else:
+        fm = SignUpForm()
+    return render(request, 'signup.html', {'form':fm})
+
+
+>>>>>>> 1f6d5f4364bed3e7548ac19bf8ed6826a19c2c69
