@@ -1,13 +1,8 @@
 from django.shortcuts import render,HttpResponseRedirect
-<<<<<<< HEAD
 from .forms import LoginForm, SelectType,ProductForm,ApplicationForm,BookingForm, SignUpForm
 from .models import ProductModel,ApplicationModel,BookingModel
 from django.contrib.auth import authenticate, login, logout
-=======
-from .forms import SelectType,ProductForm,ApplicationForm,BookingForm,SignUpForm
-from .models import ProductModel,ApplicationModel,BookingModel
-
->>>>>>> 1f6d5f4364bed3e7548ac19bf8ed6826a19c2c69
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 # Create your views here.
 def home(request):
@@ -31,10 +26,7 @@ def manager(request):
     return render(request,'manager.html')
 def admin(request):
     return render(request,'admin.html')
-<<<<<<< HEAD
 
-=======
->>>>>>> 1f6d5f4364bed3e7548ac19bf8ed6826a19c2c69
 def products(request):
     if request.method=='POST':
         fm=ProductForm(request.POST)
@@ -54,12 +46,54 @@ def booking(request):
         fm=BookingForm()
     return render(request,'booking.html',{'form':fm})
 
-<<<<<<< HEAD
-=======
 
-def login(request):
-    return render(request,'login.html')
 
+# def user_login(request):
+#   if not request.user.is_authenticated:
+#     if request.method == "POST":
+#       fm = AuthenticationForm(request=request, data=request.POST)
+#       if fm.is_valid():
+#         uname = fm.cleaned_data['username']
+#         upass = fm.cleaned_data['password']
+#         urole = fm.cleaned_data['roles']
+#         user = authenticate(username=uname, password=upass,role=urole)
+#         if user is not None:
+#           login(request, user)
+#           messages.success(request, 'Logged in successfully !!')
+#           if urole=="Manager":
+#                return HttpResponseRedirect('manager')
+#           elif urole=="Employee":
+#                return HttpResponseRedirect('employee')
+#           elif urole=="Admin":
+#                return HttpResponseRedirect('adminpage')
+#         else:
+#             fm = AuthenticationForm()
+#         return render(request, 'login.html', {'form':fm})
+#   else:
+#     if user.role=="Manager":
+#         return HttpResponseRedirect('manager')
+#     elif user.role=="Employee":
+#         return HttpResponseRedirect('employee')
+#     elif user.role=="Admin":
+#         return HttpResponseRedirect('adminpage')
+
+def user_login(request):
+    if not request.user.is_authenticated:
+        if request.method == 'POST':
+            fm=AuthenticationForm(request=request,data=request.POST)
+            if fm.is_valid():
+                uname = fm.cleaned_data['username']
+                upass = fm.cleaned_data['password']
+                user=authenticate(username=uname,password=upass)
+                if user is not None:
+                    login(request,user)
+                    messages.success(request,'Logged in Successfully')
+                    return HttpResponseRedirect('/login')
+        else:
+            fm=AuthenticationForm()
+            return render(request,"login.html",{'form':fm})
+    else:
+        return HttpResponseRedirect('/login')
 
 def signup(request):
     if request.method == "POST":
@@ -71,5 +105,6 @@ def signup(request):
         fm = SignUpForm()
     return render(request, 'signup.html', {'form':fm})
 
-
->>>>>>> 1f6d5f4364bed3e7548ac19bf8ed6826a19c2c69
+def ulogout(request):
+    logout(request)
+    return HttpResponseRedirect('/')

@@ -16,13 +16,10 @@ class BookingModel(models.Model):
     booking = models.CharField( max_length=100,choices=booking, default='other')
     Reason=models.TextField()
 
-<<<<<<< HEAD
 class Employee(models.Model):
     pass
 class Manager(models.Model):
     pass
 class AdminPage(models.Model):
     pass
-=======
-# class Singup()
->>>>>>> 1f6d5f4364bed3e7548ac19bf8ed6826a19c2c69
+

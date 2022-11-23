@@ -26,14 +26,14 @@
                   LOGIN
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{% url 'employee' %}">EMPLOYEE</a></li>
-                  <li><a class="dropdown-item" href="{% url 'manager' %}">MANAGER</a></li>
+                  <li><a class="dropdown-item" href="{% url 'logpage' %}">EMPLOYEE</a></li>
+                  <li><a class="dropdown-item" href="{% url 'logpage' %}">MANAGER</a></li>
                   <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="{% url 'admin' %}">ADMIN</a></li>
+                  <li><a class="dropdown-item" href="{% url 'logpage' %}">ADMIN</a></li>
                 </ul>
               </li>
-              {% comment %} <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <!-- {% comment %} <li class="nav-item dropdown"> -->
+                <!-- <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Singup
                 </a>
                 <ul class="dropdown-menu">
@@ -42,10 +42,10 @@
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="{% url 'admin' %}">ADMIN</a></li>
                 </ul>
-              </li> {% endcomment %}
+              </li> {% endcomment %} -->
 
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'signup' %}">Singup</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'signup' %}">SIGN UP</a>
               </li>
             </ul>
           </div>
