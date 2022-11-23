@@ -15,3 +15,10 @@ booking=(('cubical','Cubical'),('training room','Training Room'),('board room','
 class BookingModel(models.Model):
     booking = models.CharField( max_length=100,choices=booking, default='other')
     Reason=models.TextField()
+
+class Employee(models.Model):
+    pass
+class Manager(models.Model):
+    pass
+class AdminPage(models.Model):
+    pass

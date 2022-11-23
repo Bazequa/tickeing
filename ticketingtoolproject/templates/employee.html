@@ -6,10 +6,10 @@
     <title>employee</title>
 </head>
 <body>
-<form method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type='submit' value="submit">
+<form>
+    <a href="{% url 'products' %}">PRODUCTS</a><br>
+    <a href="{% url 'booking' %}">BOOKING</a><br>
+    <a href="{% url 'application' %}">APPLICATION</a><br>
 </form>
 </body>
 </html>
