@@ -45,30 +45,3 @@ def booking(request):
         fm=BookingForm()
     return render(request,'booking.html',{'form':fm})
 
-def user_signup(request):
-    if request.method == "POST":
-        form = SignUpForm(request.POST)
-    if form.is_valid():
-        #messages.success(request, 'Congratulations!! You have become an Author.')
-        user = form.save()
-    else:
-        form = SignUpForm()
-        return render(request, 'signup.html', {'form':form})
-
-def user_login(request):
-    if not request.user.is_authenticated:
-        if request.method == "POST":
-            form = LoginForm(request=request, data=request.POST)
-            if form.is_valid():
-                uname = form.cleaned_data['username']
-                upass = form.cleaned_data['password']
-                user = authenticate(username=uname, password=upass)
-                if user is not None:
-                    login(request, user)
-                    messages.success(request, 'Logged in Successfully !!')
-                    return HttpResponseRedirect('/employee')
-        else:
-            form = LoginForm()
-            return render(request, 'login.html', {'form':form})
-    else:
-        return HttpResponseRedirect('/employee')
