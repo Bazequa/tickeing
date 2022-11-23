@@ -1,6 +1,8 @@
 from django.shortcuts import render,HttpResponseRedirect
-from .forms import SelectType,ProductForm,ApplicationForm,BookingForm
+from .forms import SelectType,ProductForm,ApplicationForm,BookingForm,SignUpForm
 from .models import ProductModel,ApplicationModel,BookingModel
+
+from django.contrib import messages
 # Create your views here.
 def home(request):
     return render(request,'home.html')
@@ -45,3 +47,16 @@ def booking(request):
 
 def login(request):
     return render(request,'login.html')
+
+
+def signup(request):
+    if request.method == "POST":
+        fm = SignUpForm(request.POST)
+        if fm.is_valid():
+            messages.success(request, 'Account Created Successfully !!') 
+            user = fm.save()
+    else:
+        fm = SignUpForm()
+    return render(request, 'signup.html', {'form':fm})
+
+
