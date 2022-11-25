@@ -18,16 +18,23 @@ class BookingModel(models.Model):
 
 
 
-# class Organisation(AbstractUser):
+# class Org(AbstractUser):
 #      is_admin= models.BooleanField('Is admin', default=False)
 #      is_customer = models.BooleanField('Is customer', default=False)
 #      is_employee = models.BooleanField('Is employee', default=False)
 
 
-# class Employee(models.Model):
-#     pass
-# class Manager(models.Model):
-#     pass
-# class AdminPage(models.Model):
-#     pass
+class Employee(models.Model):
+    username=models.CharField(max_length=100)
+    password=models.SlugField(max_length=100)
+    role=models.CharField(max_length=100)
 
+class Manager(models.Model):
+    username=models.CharField(max_length=100)
+    password=models.SlugField(max_length=100)
+    role=models.CharField(max_length=100)
+
+class AdminPage(models.Model):
+    username=models.CharField(max_length=100)
+    password=models.SlugField(max_length=100)
+    role=models.CharField(max_length=100)

@@ -1,20 +1,15 @@
 from django.shortcuts import render,HttpResponseRedirect
 from .forms import  SelectType,ProductForm,ApplicationForm,BookingForm, SignUpForm
-from .models import ProductModel,ApplicationModel,BookingModel
+from .models import ProductModel,ApplicationModel,BookingModel,Manager,Employee,AdminPage
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.models import User
 from django.contrib import messages
 # Create your views here.
 def home(request):
     return render(request,'home.html')
 def employee(request):
-    if request.method=='POST':
-        fm=SelectType(request.POST)
-        if fm.is_valid():
-                return HttpResponseRedirect('/')
-    else:
-        fm=SelectType()
-    return render(request,'employee.html',{'form':fm})
+    return render(request,'employee.html')
 def manager(request):
     return render(request,'manager.html')
 def admin(request):
@@ -48,12 +43,25 @@ def user_login(request):
       if fm.is_valid():
         uname = fm.cleaned_data['username']
         upass = fm.cleaned_data['password']
-        #urole = fm.cleaned_data['roles']
-        user = authenticate(username=uname, password=upass)
-        if user is not None:
+        urole = fm.cleaned_data['role']
+        user = authenticate(username=uname, password=upass,role=urole)
+        if user is not None and user.role=='employee':
             login(request, user)
             messages.success(request, 'Logged in successfully !!')
             return HttpResponseRedirect('/employee')
+        if user is not None and user.role=='manager':
+            login(request, user)
+            messages.success(request, 'Logged in successfully !!')
+            return HttpResponseRedirect('/manager')
+
+        if user is not None and user.role=='admin':
+            login(request, user)
+            messages.success(request, 'Logged in successfully !!')
+            return HttpResponseRedirect('/adminpage')
+
+
+
+
         #   if urole=="Manager":
         #        return render(request,'employee.html')
         #   elif urole=="Employee":
@@ -89,4 +97,4 @@ def signup(request):
 
 def ulogout(request):
     logout(request)
-    return HttpResponseRedirect('/login/')
+    return HttpResponseRedirect('/')

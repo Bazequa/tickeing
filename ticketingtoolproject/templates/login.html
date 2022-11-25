@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <title>LOGIN</title>
 </head>
-<center>
 <form method="POST">
+    
     {% csrf_token %}
     {{form.as_p}}
+    {{ram}}
     <input type="submit" value="submit">
 </form>
 </body>
