@@ -51,8 +51,9 @@ def user_login(request):
         #urole = fm.cleaned_data['roles']
         user = authenticate(username=uname, password=upass)
         if user is not None:
-          login(request, user)
-          messages.success(request, 'Logged in successfully !!')
+            login(request, user)
+            messages.success(request, 'Logged in successfully !!')
+            return HttpResponseRedirect('/employee')
         #   if urole=="Manager":
         #        return render(request,'employee.html')
         #   elif urole=="Employee":
@@ -62,9 +63,9 @@ def user_login(request):
         #return render(request,'employee.html')
     else:
         fm = AuthenticationForm()
-        return render(request, 'login.html', {'form':fm})
+    return render(request, 'login.html', {'form':fm})
   else:
-     return render(request, 'login.html', {'form':fm})
+        return HttpResponseRedirect('/employee')
     # if user.role=="Manager":
     #     return HttpResponseRedirect('manager')
     # elif user.role=="Employee":
@@ -72,26 +73,6 @@ def user_login(request):
     # elif user.role=="Admin":
     #     return HttpResponseRedirect('adminpage')
 
-def user_login(request):
-     if  request.user.is_authenticated:
-        if request.method == "POST":
-            fm = SignUpForm(request=request, data=request.POST)
-            if fm.is_valid():
-                uname = fm.cleaned_data['username']
-                upass = fm.cleaned_data['password']
-                user = authenticate(username=uname, password=upass)
-        if user is not None and user.is_admin:
-             login(request, user)
-             return HttpResponseRedirect('adminpage')
-        if user is not None and user.is_Manager:
-            login(request, user)
-            return HttpResponseRedirect('manager')
-        if user is not None and user.is_employee:
-            login(request, user)
-            return HttpResponseRedirect('employee')
-     else: 
-        fm = AuthenticationForm()
-        return render(request, 'login.html', {'form':fm})
 
 
 
@@ -108,4 +89,4 @@ def signup(request):
 
 def ulogout(request):
     logout(request)
-    return HttpResponseRedirect('/')
+    return HttpResponseRedirect('/login/')

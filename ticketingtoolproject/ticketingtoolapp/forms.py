@@ -1,6 +1,5 @@
 from django import forms
-from .models import ProductModel,ApplicationModel,BookingModel,Organisation
-
+from .models import ProductModel,ApplicationModel,BookingModel
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
@@ -29,7 +28,7 @@ class SignUpForm(UserCreationForm):
     role=forms.CharField(label='roles',widget=forms.Select(choices=roles))
 
     class Meta:
-        model = Organisation
+        model = User
         fields = ['username', 'first_name', 'last_name', 'email']
         labels = {'first_name': 'First Name', 'last_name': 'Last Name', 'email': 'Email'}
         widgets = {'username':forms.TextInput(attrs={'class':'form-control'}),

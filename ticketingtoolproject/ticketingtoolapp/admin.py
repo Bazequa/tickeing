@@ -1,6 +1,6 @@
 from django.contrib import admin
 from ticketingtoolapp.models import ProductModel,ApplicationModel,BookingModel
-from ticketingtoolapp.models import Organisation
+# from ticketingtoolapp.models import Organisation
 # Register your models here.
 @admin.register(ProductModel)
 class ProductAdmin(admin.ModelAdmin):
@@ -27,4 +27,5 @@ class BookingAdmin(admin.ModelAdmin):
 #     include='__all__'
 
 
-admin.site.register(Organisation)
+
+# admin.site.register(Organisation)

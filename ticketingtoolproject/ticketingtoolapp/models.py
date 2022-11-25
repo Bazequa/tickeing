@@ -18,11 +18,11 @@ class BookingModel(models.Model):
 
 
 
-class Organisation(AbstractUser):
-     is_admin= models.BooleanField('Is admin', default=False)
-     is_customer = models.BooleanField('Is customer', default=False)
-     is_employee = models.BooleanField('Is employee', default=False)
-    
+# class Organisation(AbstractUser):
+#      is_admin= models.BooleanField('Is admin', default=False)
+#      is_customer = models.BooleanField('Is customer', default=False)
+#      is_employee = models.BooleanField('Is employee', default=False)
+
 
 # class Employee(models.Model):
 #     pass
