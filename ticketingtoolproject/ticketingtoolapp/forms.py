@@ -44,8 +44,12 @@ class SignUpForm(forms.ModelForm):
     class Meta:
         model=User
         fields='__all__'
-        # if password!=confirm_password:
-        #     raise forms.ValidationError("Password does not match")
+        def clean(self):
+            cleaned_data=super().clean()
+            password=cleaned_data['password']
+            confirm_password = cleaned_data['confirm_password']
+            if password!=confirm_password:
+                raise forms.ValidationError("Password does not match")
 
 
 class UsernameField(forms.CharField):

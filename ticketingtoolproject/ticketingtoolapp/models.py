@@ -25,6 +25,8 @@ class User(models.Model):
     role = models.CharField(max_length=100,choices=roles)
     password = models.CharField(max_length=100)
     confirm_password=models.CharField(max_length=100)
+    def __str__(self):
+        return self.username
 
 # class Org(AbstractUser):
 #      is_admin= models.BooleanField('Is admin', default=False)

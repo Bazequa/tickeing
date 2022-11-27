@@ -9,53 +9,6 @@ from django.contrib import messages
 # Create your views here.
 def home(request):
     return render(request,'home.html')
-def employee(request):
-    return render(request,'employee.html')
-def manager(request):
-    pfm=ProductModel
-    afm=ApplicationModel
-    bfm=BookingModel
-    # form={pfm:'pfm',afm:'afm','bfm':bfm}
-    return render(request,'manager.html',{pfm:'pfm',afm:'afm','bfm':bfm})
-def admin(request):
-    pfm = ProductModel
-    afm = ApplicationModel
-    bfm = BookingModel
-    return render(request,'admin.html',{pfm:'pfm',afm:'afm','bfm':bfm})
-
-def products(request):
-    if request.method=='POST':
-        fm=ProductForm(request.POST)
-        if fm.is_valid():
-            messages.success(request, 'data saved')
-            fm.save()
-            return HttpResponseRedirect('/employee')
-    else:
-        fm=ProductForm()
-    return render(request,'products.html',{'form':fm})
-def application(request):
-    if request.method=='POST':
-        fm=ApplicationForm(request.POST)
-        if fm.is_valid():
-            messages.success(request, 'data saved')
-            fm.save()
-            return HttpResponseRedirect('/employee')
-    else:
-        fm=ApplicationForm()
-    return render(request,'application.html',{'form':fm})
-def booking(request):
-    if request.method=='POST':
-        fm=BookingForm(request.POST)
-        if fm.is_valid():
-            messages.success(request, 'data saved')
-            fm.save()
-            return HttpResponseRedirect('/employee')
-    else:
-        fm=BookingForm()
-    return render(request,'booking.html',{'form':fm})
-
-
-
 def user_login(request):
   if not request.user.is_authenticated:
     if request.method == "POST":
@@ -65,10 +18,12 @@ def user_login(request):
         upass = fm.cleaned_data['password']
         urole = fm.cleaned_data['role']
         user = authenticate(username=uname, password=upass,role=urole)
+
         if user is not None and urole=='employee':
             login(request, user)
             messages.success(request, 'Logged in successfully !!')
             return HttpResponseRedirect('/employee')
+
         if user is not None and urole=='manager':
             login(request, user)
             messages.success(request, 'Logged in successfully !!')
@@ -104,7 +59,7 @@ def signup(request):
     if request.method == "POST":
         fm = SignUpForm(request.POST)
         if fm.is_valid():
-            messages.success(request, 'Account Created Successfully !!') 
+            messages.success(request, 'Account Created Successfully !!')
             fm.save()
             return HttpResponseRedirect("/login/")
     else:
@@ -114,4 +69,52 @@ def signup(request):
 def ulogout(request):
     logout(request)
     return HttpResponseRedirect('/')
+
+
+def employee(request):
+    return render(request,'employee.html')
+def manager(request):
+    pfm=ProductModel.objects.all()
+    afm=ApplicationModel.objects.all()
+    bfm=BookingModel.objects.all()
+    # form={pfm:'pfm',afm:'afm','bfm':bfm}
+    return render(request,'manager.html',{pfm:'pfm',afm:'afm','bfm':bfm})
+def admin(request):
+    pfm = ProductModel.objects.all()
+    afm = ApplicationModel.objects.all()
+    bfm = BookingModel.objects.all()
+    return render(request,'admin.html',{pfm:'pfm',afm:'afm','bfm':bfm})
+
+def products(request):
+    if request.method=='POST':
+        fm=ProductForm(request.POST)
+        if fm.is_valid():
+            messages.success(request, 'data saved')
+            fm.save()
+            return HttpResponseRedirect('/employee')
+    else:
+        fm=ProductForm()
+    return render(request,'products.html',{'form':fm})
+def application(request):
+    if request.method=='POST':
+        fm=ApplicationForm(request.POST)
+        if fm.is_valid():
+            messages.success(request, 'data saved')
+            fm.save()
+            return HttpResponseRedirect('/employee')
+    else:
+        fm=ApplicationForm()
+    return render(request,'application.html',{'form':fm})
+def booking(request):
+    if request.method=='POST':
+        fm=BookingForm(request.POST)
+        if fm.is_valid():
+            messages.success(request, 'data saved')
+            fm.save()
+            return HttpResponseRedirect('/employee')
+    else:
+        fm=BookingForm()
+    return render(request,'booking.html',{'form':fm})
+
+
 
