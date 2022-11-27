@@ -1,13 +1,11 @@
 from django import forms
-from .models import ProductModel,ApplicationModel,BookingModel
-from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
+from .models import ProductModel,ApplicationModel,BookingModel,User
 import unicodedata
 
 from django import forms
 from django.contrib.auth import authenticate, get_user_model, password_validation
 from django.contrib.auth.hashers import UNUSABLE_PASSWORD_PREFIX, identify_hasher
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.exceptions import ValidationError
@@ -38,23 +36,17 @@ class BookingForm(forms.ModelForm):
         fields='__all__'
 
 
-roles = [('Manager','Manager'),('Employee','Employee'),('Admin','Admin')]
 
-class SignUpForm(UserCreationForm):
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class':'form-control'}))
-    password2 = forms.CharField(label='Confirm Password (again)', widget=forms.PasswordInput(attrs={'class':'form-control'}))
-    role=forms.CharField(label='roles',widget=forms.Select(choices=roles))
 
+class SignUpForm(forms.ModelForm):
+    password = forms.CharField(label='Password', widget=forms.PasswordInput)
+    confirm_password = forms.CharField(label='Confirm Password (again)', widget=forms.PasswordInput)
     class Meta:
-        model = User
-        fields = ['username', 'first_name', 'last_name', 'email']
-        labels = {'first_name': 'First Name', 'last_name': 'Last Name', 'email': 'Email'}
-        widgets = {'username':forms.TextInput(attrs={'class':'form-control'}),
-            'first_name':forms.TextInput(attrs={'class':'form-control'}),
-            'last_name':forms.TextInput(attrs={'class':'form-control'}),
-            'email':forms.EmailInput(attrs={'class':'form-control'}),
-            #'Role':forms.RadioSelect(choices=roles)
-            }
+        model=User
+        fields='__all__'
+        # if password!=confirm_password:
+        #     raise forms.ValidationError("Password does not match")
+
 
 class UsernameField(forms.CharField):
     def to_python(self, value):
@@ -82,13 +74,13 @@ class AuthenticationForm(forms.Form):
     )
     role=forms.CharField(max_length=100)
     error_messages = {
-        "invalid_login": _(
+        "invalid_login": (
             "Please enter a correct %(username)s and password. Note that both "
             "fields may be case-sensitive."
         ),
-        "inactive": _("This account is inactive."),
+        "inactive": ("This account is inactive."),
     }
-    
+
 
     def __init__(self, request=None, *args, **kwargs):
         """

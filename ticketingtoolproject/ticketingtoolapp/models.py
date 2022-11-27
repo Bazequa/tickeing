@@ -16,7 +16,15 @@ class BookingModel(models.Model):
     booking = models.CharField( max_length=100,choices=booking, default='other')
     Reason=models.TextField()
 
-
+roles = [('Manager','Manager'),('Employee','Employee'),('UserAdmin','UserAdmin')]
+class User(models.Model):
+    username=models.CharField(max_length=100)
+    first_name = models.CharField(max_length=100)
+    second_name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
+    role = models.CharField(max_length=100,choices=roles)
+    password = models.CharField(max_length=100)
+    confirm_password=models.CharField(max_length=100)
 
 # class Org(AbstractUser):
 #      is_admin= models.BooleanField('Is admin', default=False)
@@ -24,17 +32,17 @@ class BookingModel(models.Model):
 #      is_employee = models.BooleanField('Is employee', default=False)
 
 
-class Employee(models.Model):
-    username=models.CharField(max_length=100)
-    password=models.SlugField(max_length=100)
-    role=models.CharField(max_length=100)
+# class Employee(models.Model):
+#     ename=models.CharField(max_length=100)
+#     epassword=models.SlugField(max_length=100)
 
-class Manager(models.Model):
-    username=models.CharField(max_length=100)
-    password=models.SlugField(max_length=100)
-    role=models.CharField(max_length=100)
 
-class AdminPage(models.Model):
-    username=models.CharField(max_length=100)
-    password=models.SlugField(max_length=100)
-    role=models.CharField(max_length=100)
+# class Manager(models.Model):
+#     mname=models.CharField(max_length=100)
+#     mpassword=models.SlugField(max_length=100)
+
+
+# class AdminPage(models.Model):
+#     aname=models.CharField(max_length=100)
+#     apassword=models.SlugField(max_length=100)
+
