@@ -6,11 +6,35 @@
     <title>ADMIN</title>
 </head>
 <body>
-{{pfm}}
-<!--{{pfm.reason}}-->
-{{bfm}}
-<!--{{bfm.reason}}-->
-{{afm}}
-<!--{{afm.reason}}-->
+    <!-- <h1>Welcome {{uname}}</h1>
+    {% for fm in pfm %}
+    <h4>Products</h4>
+    <h6>{{fm.Products}}</h6>
+    {{fm.Reason}}<br>
+    <a href="/accept/{{fm.id}}/1">Accept</a>
+    <a href="/reject/{{fm.id}}/1">Reject</a>
+    {% endfor %}
+ -->
+
+
+   
+    <h4>Appilication</h4>
+    <h6>{{am.application}}</h6>
+    {{am.Reason}}<br>
+    <a href="/complete/{{fm.id}}/2">Complete</a>
+    
+   
+
+
+
+    <!-- {% for fm in bfm %}
+    <h4>Booking</h4>
+    <h6>{{fm.booking}}</h6>
+    {{fm.Reason}}<br>
+    <a href="/accept/{{fm.id}}/3">Accept</a>
+    <a href="/reject/{{fm.id}}/3">Reject</a>
+    {% endfor %} -->
+
+
 </body>
 </html>

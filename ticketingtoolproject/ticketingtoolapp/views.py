@@ -30,7 +30,7 @@ def user_login(request):
             else:
                 login(request, user)
                 messages.success(request, 'Logged in successfully !!')
-                return HttpResponseRedirect('/emloyee')
+                return HttpResponseRedirect('/employee')
     else:
         fm = AuthenticationForm()
     return render(request, 'login.html', {'form':fm})
@@ -76,6 +76,7 @@ def application(request):
     return render(request,'application.html',{'form':fm})
 
 def booking(request):
+
     if request.method=='POST':
         fm=BookingForm(request.POST)
         if fm.is_valid():
@@ -90,15 +91,61 @@ def employee(request):
     return render(request,'employee.html')
 
 def manager(request):
-    # pfm=ProductModel.objects.all()
-    # afm=ApplicationModel.objects.all()
-    # bfm=BookingModel.objects.all()
-    # # form={pfm:'pfm',afm:'afm','bfm':bfm}
-    return render(request,'manager.html')
+    pfm=ProductModel.objects.all()
+    afm=ApplicationModel.objects.all()
+    bfm=BookingModel.objects.all()
+    context={'pfm':pfm,'afm':afm,'bfm':bfm}
+    return render(request,'manager.html', context )
+
+
+def reject(request,id, model):
+    if model=='1':
+        pm=ProductModel.objects.get(id=id)
+        pm.delete()
+        return HttpResponseRedirect('/manager')
+    if model == '2':
+        am = ApplicationModel.objects.get(id=id)
+        am.delete()
+        return HttpResponseRedirect('/manager')
+    if model == '3':
+        bm = BookingModel.objects.get(id=id)
+        bm.delete()
+        return HttpResponseRedirect('/manager')
+    return HttpResponseRedirect('/manager')
+
+def accept(request,id,model):
+    context = {}
+    lst = []
+    print(id, model)
+    if model == '2':
+        am = ApplicationModel.objects.get(id=id)
+        print('----------')
+        request.session['one'] = 1
+        request.session['one_id'] = id
+
+        
+    return HttpResponseRedirect('/manager')
+    # if model=='1':
+    #     pm=ProductModel.objects.get(id=id)
+    #     request.session['pm'] = pm
+    #     return HttpResponseRedirect('/manager')
+    # if model == '2':
+    #     print('---------')
+    #     am = ApplicationModel.objects.get(id=id)
+    #     request.session['am'] = am
+    #     return HttpResponseRedirect('/manager')
+    # if model == '3':
+    #     bm = BookingModel.objects.get(id=id)
+    #     request.session['bm'] = bm
+    #     # return HttpResponseRedirect('/admin')
+    # return HttpResponseRedirect('/manager')
 
 def admin(request):
-    # pfm = ProductModel.objects.all()
-    # afm = ApplicationModel.objects.all()
-    # bfm = BookingModel.objects.all()
-    return render(request,'admin.html')
+   
+    am = request.session.get('one')
+    one_id = request.session.get('one_id')
+    if am == 1:
+        am = ApplicationModel.objects.get(id=one_id)
 
+    context = {'am': am}
+    return render(request,'admin.html', context)

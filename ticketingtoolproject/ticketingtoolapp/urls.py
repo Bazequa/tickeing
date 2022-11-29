@@ -15,6 +15,9 @@ urlpatterns = [
 
     path('sign/',views.signup,name="signup"),
     path('logout/',views.ulogout,name="logout"),
+
+    path('accept/<int:id>/<str:model>',views.accept,name='accept'),
+    path('reject/<int:id>/<str:model>',views.reject,name='reject'),
 ]
 
 

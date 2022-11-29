@@ -3,17 +3,18 @@ from ticketingtoolapp.models import ProductModel,ApplicationModel,BookingModel
 # from ticketingtoolapp.models import Employee,Manager,AdminPage
 # from ticketingtoolapp.models import Org
 # Register your models here.
+
 @admin.register(ProductModel)
 class ProductAdmin(admin.ModelAdmin):
-    include='__all__'
+    list_display = ['id','Products','Reason']
 
 @admin.register(ApplicationModel)
 class ApplicationAdmin(admin.ModelAdmin):
-    include='__all__'
+    list_display = ['id','application','Reason']
 
 @admin.register(BookingModel)
 class BookingAdmin(admin.ModelAdmin):
-    include='__all__'
+    list_display = ['id','booking','Reason']
 
 
 
