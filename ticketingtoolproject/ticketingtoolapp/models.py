@@ -16,22 +16,19 @@ class BookingModel(models.Model):
     booking = models.CharField( max_length=100,choices=booking, default='other')
     Reason=models.TextField()
 
-roles = [('Manager','Manager'),('Employee','Employee'),('UserAdmin','UserAdmin')]
-class User(models.Model):
-    username=models.CharField(max_length=100)
-    first_name = models.CharField(max_length=100)
-    second_name = models.CharField(max_length=100)
-    email = models.EmailField(max_length=100)
-    role = models.CharField(max_length=100,choices=roles)
-    password = models.CharField(max_length=100)
-    confirm_password=models.CharField(max_length=100)
-    def __str__(self):
-        return self.username
+# roles = [('Manager','Manager'),('Employee','Employee'),('UserAdmin','UserAdmin')]
+# class User(models.Model):
+#     username=models.CharField(max_length=100)
+#     first_name = models.CharField(max_length=100)
+#     second_name = models.CharField(max_length=100)
+#     email = models.EmailField(max_length=100)
+#     role = models.CharField(max_length=100,choices=roles)
+#     password = models.CharField(max_length=100)
+#     confirm_password=models.CharField(max_length=100)
+#     def __str__(self):
+#         return self.username
 
-# class Org(AbstractUser):
-#      is_admin= models.BooleanField('Is admin', default=False)
-#      is_customer = models.BooleanField('Is customer', default=False)
-#      is_employee = models.BooleanField('Is employee', default=False)
+
 
 
 # class Employee(models.Model):
