@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import ProductModel,ApplicationModel,BookingModel
+from .models import ProductsModel,ApplicationsModel,BookingsModel
 from django.contrib.auth.forms import UserCreationForm
 
 Choices=[(1,'Products'),(2,'Application'),(3,'Booking')]
@@ -10,17 +10,17 @@ class SelectType(forms.Form):
 
 class ProductForm(forms.ModelForm):
     class Meta:
-        model=ProductModel
+        model=ProductsModel
         fields='__all__'
 
 class ApplicationForm(forms.ModelForm):
     class Meta:
-        model=ApplicationModel
+        model=ApplicationsModel
         fields='__all__'
 
 class BookingForm(forms.ModelForm):
     class Meta:
-        model=BookingModel
+        model=BookingsModel
         fields='__all__'
 
 class SignUpForm(UserCreationForm):

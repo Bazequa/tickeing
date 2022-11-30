@@ -23,6 +23,8 @@
     <tr>
     {% for fm in pfm %}
     <th>Products</th>
+    <td>{{fm.employee_id}}</td>
+    <td>{{fm.employee_name}}</td>
     <td>{{fm.Products}}</td>
     {{fm.Reason}}<br>
     <div class="dflex flex-row">
@@ -35,6 +37,8 @@
 <table class="ram">
     {% for fm in afm %}
     <th>Appilication</th>
+    <td>{{fm.employee_id}}</td>
+    <td>{{fm.employee_name}}</td>
     <td>{{fm.application}}</td>
     {{fm.Reason}}<br>
     <div class="dflex flex-row">
@@ -47,6 +51,8 @@
 <table class="ram">
     {% for fm in bfm %}
     <th>Booking</th>
+    <td>{{fm.employee_id}}</td>
+    <td>{{fm.employee_name}}</td>
     <td>{{fm.booking}}</td>
     {{fm.Reason}}<br>
     <div class="dflex flex-row">

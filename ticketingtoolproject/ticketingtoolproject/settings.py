@@ -78,9 +78,9 @@ WSGI_APPLICATION = 'ticketingtoolproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'ticketingdata',
+        'NAME': 'ticketingdatabase',
         'USER': 'root',
-        'PASSWORD': 'Ramesh244@',
+        'PASSWORD': 'root',
         'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }

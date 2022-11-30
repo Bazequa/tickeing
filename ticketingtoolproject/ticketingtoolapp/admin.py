@@ -1,20 +1,20 @@
 from django.contrib import admin
-from ticketingtoolapp.models import ProductModel,ApplicationModel,BookingModel
+from ticketingtoolapp.models import ProductsModel,ApplicationsModel,BookingsModel
 # from ticketingtoolapp.models import Employee,Manager,AdminPage
 # from ticketingtoolapp.models import Org
 # Register your models here.
 
-@admin.register(ProductModel)
-class ProductAdmin(admin.ModelAdmin):
-    list_display = ['id','Products','Reason']
+@admin.register(ProductsModel)
+class ProductsAdmin(admin.ModelAdmin):
+    list_display = ['id','employee_id','employee_name','Products','Reason']
 
-@admin.register(ApplicationModel)
-class ApplicationAdmin(admin.ModelAdmin):
-    list_display = ['id','application','Reason']
+@admin.register(ApplicationsModel)
+class ApplicationsAdmin(admin.ModelAdmin):
+    list_display = ['id','employee_id','employee_name','application','Reason']
 
-@admin.register(BookingModel)
-class BookingAdmin(admin.ModelAdmin):
-    list_display = ['id','booking','Reason']
+@admin.register(BookingsModel)
+class BookingsAdmin(admin.ModelAdmin):
+    list_display = ['id','employee_id','employee_name','booking','Reason']
 
 
 

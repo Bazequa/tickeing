@@ -1,6 +1,6 @@
 from django.shortcuts import render,HttpResponseRedirect
 from .forms import  SelectType,ProductForm,ApplicationForm,BookingForm, SignUpForm
-from .models import ProductModel,ApplicationModel,BookingModel
+from .models import ProductsModel,ApplicationsModel,BookingsModel
 # from .models import Manager,Employee,AdminPage
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
@@ -91,39 +91,33 @@ def employee(request):
     return render(request,'employee.html')
 
 def manager(request):
-    pfm=ProductModel.objects.all()
-    afm=ApplicationModel.objects.all()
-    bfm=BookingModel.objects.all()
+    pfm=ProductsModel.objects.all()
+    afm=ApplicationsModel.objects.all()
+    bfm=BookingsModel.objects.all()
     context={'pfm':pfm,'afm':afm,'bfm':bfm}
     return render(request,'manager.html', context )
 
 
 def reject(request,id, model):
     if model=='1':
-        pm=ProductModel.objects.get(id=id)
+        pm=ProductsModel.objects.get(id=id)
         pm.delete()
         return HttpResponseRedirect('/manager')
     if model == '2':
-        am = ApplicationModel.objects.get(id=id)
+        am = ApplicationsModel.objects.get(id=id)
         am.delete()
         return HttpResponseRedirect('/manager')
     if model == '3':
-        bm = BookingModel.objects.get(id=id)
+        bm = BookingsModel.objects.get(id=id)
         bm.delete()
         return HttpResponseRedirect('/manager')
     return HttpResponseRedirect('/manager')
 
 def accept(request,id,model):
-    context = {}
-    lst = []
-    print(id, model)
     if model == '2':
-        am = ApplicationModel.objects.get(id=id)
-        print('----------')
+        am = ApplicationsModel.objects.get(id=id)
         request.session['one'] = 1
         request.session['one_id'] = id
-
-        
     return HttpResponseRedirect('/manager')
     # if model=='1':
     #     pm=ProductModel.objects.get(id=id)
@@ -141,11 +135,15 @@ def accept(request,id,model):
     # return HttpResponseRedirect('/manager')
 
 def admin(request):
-   
-    am = request.session.get('one')
-    one_id = request.session.get('one_id')
-    if am == 1:
-        am = ApplicationModel.objects.get(id=one_id)
+    pfm=ProductsModel.objects.all()
+    afm=ApplicationsModel.objects.all()
+    bfm=BookingsModel.objects.all()
+    context={'pfm':pfm,'afm':afm,'bfm':bfm}
+    return render(request,'admin.html', context )
+    # am = request.session.get('one')
+    # one_id = request.session.get('one_id')
+    # if am == 1:
+    #     am = ApplicationModel.objects.get(id=one_id)
 
-    context = {'am': am}
-    return render(request,'admin.html', context)
+    # context = {'am': am}
+    # return render(request,'admin.html', context)
