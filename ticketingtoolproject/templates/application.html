@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        .ram {
+            background-color: aqua;
+            display:flex;
+            flex-direction: column;
+            height:100vh;
+            font-size: 24px;
+            color:black;
+        }
+    </style>
     <meta charset="UTF-8">
     <title>employee</title>
 </head>
 <body>
+    <div class="ram">
 <form method="POST">
     {% csrf_token %}
     {{form.as_p}}
     <input type='submit' value="submit">
 </form>
+</div>
 </body>
 </html>

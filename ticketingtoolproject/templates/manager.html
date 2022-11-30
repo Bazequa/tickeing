@@ -2,43 +2,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        .ram {
+            background-color: aqua;
+            display:flex;
+            flex-direction: column;
+            height:100vh;
+            font-size: 24px;
+            color:black;
+        }
+    </style>
     <meta charset="UTF-8">
     <title>manager</title>
 </head>
 <body>
+    <div class="ram">
 
- <h1>Welcome {{uname}}</h1>
-
+ <h1>Welcome {{user}}</h1>
+ <table class="ram">
+    <tr>
     {% for fm in pfm %}
-    <h4>Products</h4>
-    <h6>{{fm.Products}}</h6>
+    <th>Products</th>
+    <td>{{fm.Products}}</td>
     {{fm.Reason}}<br>
+    <div class="dflex flex-row">
     <a href="/accept/{{fm.id}}/1">Accept</a>
     <a href="/reject/{{fm.id}}/1">Reject</a>
+    </div>
     {% endfor %}
-
-
-
+</tr>
+ </table>
+<table class="ram">
     {% for fm in afm %}
-    <h4>Appilication</h4>
-    <h6>{{fm.application}}</h6>
+    <th>Appilication</th>
+    <td>{{fm.application}}</td>
     {{fm.Reason}}<br>
+    <div class="dflex flex-row">
     <a href="/accept/{{fm.id}}/2">Accept</a>
     <a href="/reject/{{fm.id}}/2">Reject</a>
+    </div>
     {% endfor %}
+</table>
 
-
-
+<table class="ram">
     {% for fm in bfm %}
-    <h4>Booking</h4>
-    <h6>{{fm.booking}}</h6>
+    <th>Booking</th>
+    <td>{{fm.booking}}</td>
     {{fm.Reason}}<br>
+    <div class="dflex flex-row">
     <a href="/accept/{{fm.id}}/3">Accept</a>
     <a href="/reject/{{fm.id}}/3">Reject</a>
     {% endfor %}
-
-
-
+    </div>
+ </table>
+    </div>
 
 </body>
 </html>
