@@ -11,7 +11,12 @@
             font-size: 24px;
             color:black;
         }
+        .table {
+            background-color: yellowgreen;
+        }
     </style>
+
+    
     <meta charset="UTF-8">
     <title>manager</title>
 </head>
@@ -19,7 +24,7 @@
     <div class="ram">
 
  <h1>Welcome {{user}}</h1>
- <table class="ram">
+ {% comment %} <table class="ram">
     <tr>
     {% for fm in pfm %}
     <th>Products</th>
@@ -60,7 +65,65 @@
     <a href="/reject/{{fm.id}}/3">Reject</a>
     {% endfor %}
     </div>
- </table>
+ </table> {% endcomment %}
+ <table class="table" align="center ml-3 pl-3">
+    <thead>
+    <tr align="center">
+        {% comment %} <th>id</th> {% endcomment %}
+        <th>employeeId</th>
+        <th>employee_name</th>
+        <th>Products/booking/Application</th>
+        <th>Reason</th>
+        <th>Status</th>
+      
+    </tr></thead>
+
+    {% for fm in pfm %}
+<tr align="center">
+    {% comment %} <td>{{fm.id}}</td> {% endcomment %}
+    <td>{{ fm.employee_id}}</td>
+    <td>{{ fm.employee_name }}</td>
+    <td>{{ fm.Products }}</td>
+    <td>{{ fm.Reason }}</td>
+
+      <td> <a href="/accept/{{fm.id}}/3">Accept</a>
+        <a href="/reject/{{fm.id}}/3">Reject</a></td>
+</tr>
+{% endfor %}
+
+
+
+
+    {% for fm in afm %}
+<tr align="center">
+    {% comment %} <td>{{fm.id}}</td> {% endcomment %}
+    <td>{{ fm.employee_id }}</td>
+    <td>{{ fm.employee_name }}</td>
+    <td>{{fm.booking}}</td>
+    <td>{{ fm.Reason }}</td>
+    
+      <td> <a href="/accept/{{fm.id}}/3">Accept</a>
+        <a href="/reject/{{fm.id}}/3">Reject</a></td>
+</tr>
+{% endfor %}
+
+
+    {% for fm in bfm %}
+<tr align="center">
+    {% comment %} <td>{{fm.id}}</td> {% endcomment %}
+    <td>{{ fm.employee_id }}</td>
+    <td>{{ fm.employee_name }}</td>
+    <td>{{ fm.application }}</td>
+    <td>{{ fm.Reason }}</td>
+    <td> <a href="/accept/{{fm.id}}/3">Accept</a>
+        <a href="/reject/{{fm.id}}/3">Reject</a></td>
+   
+</tr>
+{% endfor %}
+
+</table>
+
+
     </div>
 
 </body>

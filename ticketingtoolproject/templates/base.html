@@ -48,14 +48,17 @@
 
             <li class="base"><a href="{% url 'employee' %}">Employee</a></li> -->
             {% if user.is_authenticated %}
-            <h1 class="base pl-3">Welcome {{user}}</h1>
+            {% comment %} <h1 class="base pl-3">Welcome {{user}}</h1> {% endcomment %}
 
             <li class="base" style="float:right"><a class="active" href="{% url 'logout' %}">Logout</a></li>
             {% else %}
+            <li class="base" style="float:right"><a class="active" href="{% url 'signup' %}">Singup</a></li>
 
             <!-- <li class="base"><a href="{% url 'employee' %}">Employee</a></li> -->
             <li class="base" style="float:right"><a class="active" href="{% url 'logpage' %}">Login</a></li>
             {% endif %}
+
+            
           </ul>
 
     </body>
