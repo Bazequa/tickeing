@@ -86,8 +86,8 @@
     <td>{{ fm.Products }}</td>
     <td>{{ fm.Reason }}</td>
 
-      <td> <a href="/accept/{{fm.id}}/3">Accept</a>
-        <a href="/reject/{{fm.id}}/3">Reject</a></td>
+      <td> <a href="/accept/{{fm.id}}/1">Accept</a>
+        <a href="/reject/{{fm.id}}/1">Reject</a></td>
 </tr>
 {% endfor %}
 
@@ -99,11 +99,11 @@
     {% comment %} <td>{{fm.id}}</td> {% endcomment %}
     <td>{{ fm.employee_id }}</td>
     <td>{{ fm.employee_name }}</td>
-    <td>{{fm.booking}}</td>
+    <td>{{fm.application}}</td>
     <td>{{ fm.Reason }}</td>
     
-      <td> <a href="/accept/{{fm.id}}/3">Accept</a>
-        <a href="/reject/{{fm.id}}/3">Reject</a></td>
+      <td> <a href="/accept/{{fm.id}}/2">Accept</a>
+        <a href="/reject/{{fm.id}}/2">Reject</a></td>
 </tr>
 {% endfor %}
 
@@ -113,7 +113,7 @@
     {% comment %} <td>{{fm.id}}</td> {% endcomment %}
     <td>{{ fm.employee_id }}</td>
     <td>{{ fm.employee_name }}</td>
-    <td>{{ fm.application }}</td>
+    <td>{{ fm.booking }}</td>
     <td>{{ fm.Reason }}</td>
     <td> <a href="/accept/{{fm.id}}/3">Accept</a>
         <a href="/reject/{{fm.id}}/3">Reject</a></td>

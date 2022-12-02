@@ -30,9 +30,11 @@
         .ram {
             background-color: aqua;
             display:flex;
-            height:100vh;
             font-size: 24px;
             color:black;
+        }
+        .table {
+            background-color: yellowgreen;
         }
     </style>
     <meta charset="UTF-8">
@@ -40,12 +42,83 @@
 </head>
 <body>
 <form>
-<div class="ram">
-    <h1>welcome{{user}}</h1>
+<div class="ram"> 
+
+    <h1>welcome  {{user}}</h1>
     <a  class="p-5" href="{% url 'products' %}">PRODUCTS</a></hr>
     <a  class="p-5" href="{% url 'booking' %}">BOOKING</a><hr>
     <a  class="p-5" href="{% url 'application' %}">APPLICATION</a><hr>
+   
 </div>
+{% comment %} {% if user.fm.employee_name %} {% endcomment %}
+
+<table class="table" align="center ml-3 pl-3">
+    <thead>
+    <tr align="center">
+        {% comment %} <th>id</th> {% endcomment %}
+        {% comment %} <th>employeeId</th>
+        <th>employee_name</th> {% endcomment %}
+        <th>Products/booking/Application</th>
+        <th>Reason</th>
+        <th>Status</th>
+      
+    </tr></thead>
+
+    {% for fm in pfm %}
+    {% comment %} {{user}} {{fm.user}} {% endcomment %}
+    {% if user == fm.user %}
+<tr align="center">
+    {% comment %} <td>{{fm.id}}</td> {% endcomment %}
+    {% comment %} <td>{{ fm.employee_id}}</td>
+    <td>{{ fm.employee_name }}</td> {% endcomment %}
+    <td>{{ fm.Products }}</td>
+    <td>{{ fm.Reason }}</td>
+
+      <td> <a href="/accept/{{fm.id}}/3">pending</a>
+        <a href="/reject/{{fm.id}}/3">complite</a></td>
+</tr>
+{% endif %}
+{% endfor %}
+
+
+
+
+    {% for fm in afm %}
+    {% comment %} {{user}} {{fm.user}} {% endcomment %}
+    {% if user == fm.user %}
+<tr align="center">
+    {% comment %} <td>{{fm.id}}</td> {% endcomment %}
+    {% comment %} <td>{{ fm.employee_id }}</td>
+    <td>{{ fm.employee_name }}</td> {% endcomment %}
+    <td>{{fm.application}}</td>
+    <td>{{ fm.Reason }}</td>
+    
+      <td> <a href="/accept/{{fm.id}}/3">pending</a>
+        <a href="/reject/{{fm.id}}/3">complite</a></td>
+</tr>
+{% endif %}
+{% endfor %}
+
+
+    {% for fm in bfm %}
+    {% comment %} {{user}} {{fm.user}} {% endcomment %}
+    {% if user == fm.user %}
+<tr align="center">
+    {% comment %} <td>{{fm.id}}</td> {% endcomment %}
+    {% comment %} <td>{{ fm.employee_id }}</td>
+    <td>{{ fm.employee_name }}</td> {% endcomment %}
+    <td>{{ fm.booking }}</td>
+    <td>{{ fm.Reason }}</td>
+    <td> <a href="/accept/{{fm.id}}/3">pending</a>
+        <a href="/reject/{{fm.id}}/3">complite</a></td>
+   
+</tr>
+{% endif %}
+{% endfor %}
+
+</table>
+{% comment %} {% endif%} {% endcomment %}
+
 </form>
 </body>
 </html>

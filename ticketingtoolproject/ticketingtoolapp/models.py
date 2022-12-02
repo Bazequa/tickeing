@@ -1,9 +1,11 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 products=(('bag','Bag'),('laptop','Laptop'),('mouse','Mouse'),('headset','Headset'),('keyboard','Keyboard'),('other','Other'))
 class ProductsModel(models.Model):
     employee_id=models.IntegerField(default=00000)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, editable=False)
     employee_name=models.CharField(max_length=100,default="XXXXXXXXX")
     Products = models.CharField (max_length=100,choices=products, default='other')
     Reason=models.TextField()
@@ -13,6 +15,7 @@ class ProductsModel(models.Model):
 application=(('pycharm','Pycharm'),('vscode','VSCode'),('python','Python'),('java','Java'),('mysql','MySql'),('ecllipse','Ecllipse'),('other','Other'))
 class ApplicationsModel(models.Model):
     employee_id=models.IntegerField(default=00000)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, editable=False)
     employee_name=models.CharField(max_length=100,default="XXXXXXXXX")
     application = models.CharField(max_length=100, choices=application, default='other')
     Reason=models.TextField()
@@ -22,6 +25,7 @@ class ApplicationsModel(models.Model):
 booking=(('cubical','Cubical'),('training room','Training Room'),('board room','Board Room'),('interview room','Interview Room'),('other','Other'))
 class BookingsModel(models.Model):
     employee_id=models.IntegerField(default=00000)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, editable=False)
     employee_name=models.CharField(max_length=100,default="XXXXXXXXX")
     booking = models.CharField( max_length=100,choices=booking, default='other')
     Reason=models.TextField()

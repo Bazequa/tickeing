@@ -58,7 +58,9 @@ def products(request):
         fm=ProductForm(request.POST)
         if fm.is_valid():
             messages.success(request, 'data saved')
-            fm.save()
+            model = ProductsModel(user=request.user, Products=request.POST.get('Products'), Reason=request.POST.get('Reason'))
+            model.save()
+            
             return HttpResponseRedirect('/employee')
     else:
         fm=ProductForm()
@@ -69,7 +71,9 @@ def application(request):
         fm=ApplicationForm(request.POST)
         if fm.is_valid():
             messages.success(request, 'data saved')
-            fm.save()
+            model = ApplicationsModel(user=request.user, application=request.POST.get('application'), Reason=request.POST.get('Reason'))
+            model.save()
+           
             return HttpResponseRedirect('/employee')
     else:
         fm=ApplicationForm()
@@ -81,14 +85,19 @@ def booking(request):
         fm=BookingForm(request.POST)
         if fm.is_valid():
             messages.success(request, 'data saved')
-            fm.save()
+            model = BookingsModel(user=request.user, booking=request.POST.get('booking'), Reason=request.POST.get('Reason'))
+            model.save()
             return HttpResponseRedirect('/employee')
     else:
         fm=BookingForm()
     return render(request,'booking.html',{'form':fm})
 
 def employee(request):
-    return render(request,'employee.html')
+    pfm=ProductsModel.objects.all()
+    afm=ApplicationsModel.objects.all()
+    bfm=BookingsModel.objects.all()
+    context={'pfm':pfm,'afm':afm,'bfm':bfm}
+    return render(request,'employee.html',context)
 
 def manager(request):
     pfm=ProductsModel.objects.all()
