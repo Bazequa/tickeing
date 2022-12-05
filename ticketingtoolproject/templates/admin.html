@@ -6,113 +6,64 @@
     <title>ADMIN</title>
 </head>
 <body>
-    <div class="ram">
+  <h1>Welcome {{user}}</h1>
+  <div>
+<table class="table" align="center ml-3 pl-3">
+    <thead>
+    <tr align="center">
+        {% comment %} <th>id</th> {% endcomment %}
+        <th>employeeId</th>
+        <th>employee_name</th>
+        <th>Products/booking/Application</th>
+        <th>Reason</th>
+        <th>Status</th>
 
-        <table class="table" align="center ml-3 pl-3">
-            <thead>
-            <tr align="center">
-                {% comment %} <th>id</th> {% endcomment %}
-                <th>employeeId</th>
-                <th>employee_name</th>
-                <th>Products/booking/Application</th>
-                <th>Reason</th>
-                <th>Status</th>
-              
-            </tr></thead>
-        
-            {% for fm in pfm %}
-        <tr align="center">
-            {% comment %} <td>{{fm.id}}</td> {% endcomment %}
-            <td>{{ fm.employee_id}}</td>
-            <td>{{ fm.employee_name }}</td>
-            <td>{{ fm.Products }}</td>
-            <td>{{ fm.Reason }}</td>
-        
-              <td> <a href="/accept/{{fm.id}}/3">Yet To Approved</a>
-                <a href="/reject/{{fm.id}}/3">Approved</a></td>
-        </tr>
-        {% endfor %}
-        
-        
-        
-        
-            {% for fm in afm %}
-        <tr align="center">
-            {% comment %} <td>{{fm.id}}</td> {% endcomment %}
-            <td>{{ fm.employee_id }}</td>
-            <td>{{ fm.employee_name }}</td>
-            <td>{{fm.booking}}</td>
-            <td>{{ fm.Reason }}</td>
-            
-              <td> <a href="/accept/{{fm.id}}/3">Accept</a>
-                <a href="/reject/{{fm.id}}/3">Reject</a></td>
-        </tr>
-        {% endfor %}
-        
-        
-            {% for fm in bfm %}
-        <tr align="center">
-            {% comment %} <td>{{fm.id}}</td> {% endcomment %}
-            <td>{{ fm.employee_id }}</td>
-            <td>{{ fm.employee_name }}</td>
-            <td>{{ fm.application }}</td>
-            <td>{{ fm.Reason }}</td>
-            <td> <a href="/accept/{{fm.id}}/3">Yet To Approved</a>
-                <a href="/reject/{{fm.id}}/3">Complete</a>
-           
-        </tr>
-        {% endfor %}
-        
-        </table>
-        
+    </tr></thead>
 
-
-
-
-
-    </div>
-
- <h1 >Welcome {{user}}</h1>
- <table class="ram">
-    <tr>
     {% for fm in pfm %}
-    <th>Products</th>
-    <td>{{fm.employee_id}}</td>
-    <td>{{fm.employee_name}}</td>
-    <td>{{fm.Products}}</td>
-    {{fm.Reason}}<br>
-    <div class="dflex flex-row">
-    <a href="/reject/{{fm.id}}/1">Complete</a>
-    </div>
-    {% endfor %}
-</tr>
- </table>
-<table class="ram">
-    {% for fm in afm %}
-    <th>Appilication</th>
-    <td>{{fm.employee_id}}</td>
-    <td>{{fm.employee_name}}</td>
-    <td>{{fm.application}}</td>
-    {{fm.Reason}}<br>
-    <div class="dflex flex-row">
-     <p>pendding</p>
-    <a href="/reject/{{fm.id}}/2">Complete</a>
-    </div>
-    {% endfor %}
-</table>
+<tr align="center">
+    {% comment %} <td>{{fm.id}}</td> {% endcomment %}
+    <td>{{ fm.employee_id}}</td>
+    <td>{{ fm.employee_name }}</td>
+    <td>{{ fm.Products }}</td>
+    <td>{{ fm.Reason }}</td>
 
-<table class="ram">
+      <td> <a>{{id}}</a>
+        <a href="/reject/{{fm.id}}/1">Complete</a></td>
+</tr>
+{% endfor %}
+
+
+
+
+    {% for fm in afm %}
+<tr align="center">
+    {% comment %} <td>{{fm.id}}</td> {% endcomment %}
+    <td>{{ fm.employee_id }}</td>
+    <td>{{ fm.employee_name }}</td>
+    <td>{{fm.application}}</td>
+    <td>{{ fm.Reason }}</td>
+
+      <td> <a>{{id}}</a>
+        <a href="/reject/{{fm.id}}/2">Complete</a></td>
+</tr>
+{% endfor %}
+
+
     {% for fm in bfm %}
-    <th>Booking</th>
-    <td>{{fm.employee_id}}</td>
-    <td>{{fm.employee_name}}</td>
-    <td>{{fm.booking}}</td>
-    {{fm.Reason}}<br>
-    <div class="dflex flex-row">
-    <a href="/reject/{{fm.id}}/3">Complete</a>
-    {% endfor %}
-    </div>
- </table>
-    </div>
+<tr align="center">
+    {% comment %} <td>{{fm.id}}</td> {% endcomment %}
+    <td>{{ fm.employee_id }}</td>
+    <td>{{ fm.employee_name }}</td>
+    <td>{{ fm.booking }}</td>
+    <td>{{ fm.Reason }}</td>
+    <td> <a>{{id}}</a>
+        <a href="/reject/{{fm.id}}/3">Complete</a></td>
+
+</tr>
+{% endfor %}
+
+</table>
+  </div>
 </body>
    

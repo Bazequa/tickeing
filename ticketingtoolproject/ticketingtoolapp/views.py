@@ -108,51 +108,52 @@ def manager(request):
 
 
 def reject(request,id, model):
-    if model=='1':
-        pm=ProductsModel.objects.get(id=id)
-        pm.delete()
-        return HttpResponseRedirect('/manager')
-    if model == '2':
-        am = ApplicationsModel.objects.get(id=id)
-        am.delete()
-        return HttpResponseRedirect('/manager')
-    if model == '3':
-        bm = BookingsModel.objects.get(id=id)
-        bm.delete()
-        return HttpResponseRedirect('/manager')
+    if model==1:
+        rpm=ProductsModel.objects.GET.get(id=id)
+        # reject=self.request.POST.get('reject')
+        # reject=request.session[id]
+    if model == 2:
+        ram = ApplicationsModel.objects.get(id=id)
+        # reject = self.request.POST.get('reject')
+        # reject=request.session[id]
+    if model == 3:
+        rbm = BookingsModel.objects.get(id=id)
+        # reject=self.request.POST.get('reject')
+        # reject=request.session[id]
     return HttpResponseRedirect('/manager')
 
 def accept(request,id,model):
-    if model == '2':
-        am = ApplicationsModel.objects.get(id=id)
-        request.session['one'] = 1
-        request.session['one_id'] = id
+    if model == 1:
+        apm =ProductsModel.objects.get(id=id)
+        # accept=self.request.POST.get('accept')
+        # accept = request.session[id]
+    if model == 2:
+        aam=ApplicationsModel.objects.get(id=id)
+        # accept=self.request.POST.get('accept')
+        # accept=request.session[id]
+    if model == 3:
+        abm=BookingsModel.objects.get(id=id)
+        # accept=self.request.POST.get('accept')
+        # accept=request.session[id]
     return HttpResponseRedirect('/manager')
-    # if model=='1':
-    #     pm=ProductModel.objects.get(id=id)
-    #     request.session['pm'] = pm
-    #     return HttpResponseRedirect('/manager')
-    # if model == '2':
-    #     print('---------')
-    #     am = ApplicationModel.objects.get(id=id)
-    #     request.session['am'] = am
-    #     return HttpResponseRedirect('/manager')
-    # if model == '3':
-    #     bm = BookingModel.objects.get(id=id)
-    #     request.session['bm'] = bm
-    #     # return HttpResponseRedirect('/admin')
-    # return HttpResponseRedirect('/manager')
 
 def admin(request):
     pfm=ProductsModel.objects.all()
     afm=ApplicationsModel.objects.all()
     bfm=BookingsModel.objects.all()
-    context={'pfm':pfm,'afm':afm,'bfm':bfm}
+    id = 'pending'
+    print(request.session.get(id))
+    if request.session.get(id)=='rpm':
+            id.replace('reject')
+    elif request.session.get(id)=='ram':
+            id.replace('reject')
+    elif request.session.get(id) == 'rbm':
+            id.replace('reject')
+    elif request.session.get(id)=='apm':
+            id.replace('accept')
+    elif request.session.get(id)=='aam':
+            id.replace('accept')
+    elif request.session.get(id)=='abm':
+            id.replace('accept')
+    context={'pfm':pfm,'afm':afm,'bfm':bfm,'id':id}
     return render(request,'admin.html', context )
-    # am = request.session.get('one')
-    # one_id = request.session.get('one_id')
-    # if am == 1:
-    #     am = ApplicationModel.objects.get(id=one_id)
-
-    # context = {'am': am}
-    # return render(request,'admin.html', context)

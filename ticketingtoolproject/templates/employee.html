@@ -74,8 +74,8 @@
     <td>{{ fm.Products }}</td>
     <td>{{ fm.Reason }}</td>
 
-      <td> <a href="/accept/{{fm.id}}/3">pending</a>
-        <a href="/reject/{{fm.id}}/3">complite</a></td>
+      <td> <a>pending</a>
+        <a href="/reject/{{fm.id}}/3">delete</a></td>
 </tr>
 {% endif %}
 {% endfor %}
@@ -93,8 +93,8 @@
     <td>{{fm.application}}</td>
     <td>{{ fm.Reason }}</td>
     
-      <td> <a href="/accept/{{fm.id}}/3">pending</a>
-        <a href="/reject/{{fm.id}}/3">complite</a></td>
+      <td> <a>pending</a>
+        <a href="/reject/{{fm.id}}/3">delete</a></td>
 </tr>
 {% endif %}
 {% endfor %}
@@ -109,8 +109,9 @@
     <td>{{ fm.employee_name }}</td> {% endcomment %}
     <td>{{ fm.booking }}</td>
     <td>{{ fm.Reason }}</td>
-    <td> <a href="/accept/{{fm.id}}/3">pending</a>
-        <a href="/reject/{{fm.id}}/3">complite</a></td>
+
+    <td> <a>pending</a>
+        <a href="/reject/{{fm.id}}/3">delete</a></td>
    
 </tr>
 {% endif %}

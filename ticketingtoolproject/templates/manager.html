@@ -33,8 +33,8 @@
     <td>{{fm.Products}}</td>
     {{fm.Reason}}<br>
     <div class="dflex flex-row">
-    <a href="/accept/{{fm.id}}/1">Accept</a>
-    <a href="/reject/{{fm.id}}/1">Reject</a>
+    <td> <button name='accept' value='accept' href="/accept/{{fm.id}}/1">Accept</button>
+        <button name='accept' value='accept' href="/reject/{{fm.id}}/1">Reject</button></td>
     </div>
     {% endfor %}
 </tr>
@@ -47,8 +47,8 @@
     <td>{{fm.application}}</td>
     {{fm.Reason}}<br>
     <div class="dflex flex-row">
-    <a href="/accept/{{fm.id}}/2">Accept</a>
-    <a href="/reject/{{fm.id}}/2">Reject</a>
+    <td> <button name='accept' value='accept' href="/accept/{{fm.id}}/1">Accept</button>
+        <button name='accept' value='accept' href="/reject/{{fm.id}}/1">Reject</button></td>
     </div>
     {% endfor %}
 </table>
@@ -61,11 +61,13 @@
     <td>{{fm.booking}}</td>
     {{fm.Reason}}<br>
     <div class="dflex flex-row">
-    <a href="/accept/{{fm.id}}/3">Accept</a>
-    <a href="/reject/{{fm.id}}/3">Reject</a>
+    <td> <button name='accept' value='accept' href="/accept/{{fm.id}}/1">Accept</button>
+        <button name='accept' value='accept' href="/reject/{{fm.id}}/1">Reject</button></td>
     {% endfor %}
     </div>
  </table> {% endcomment %}
+
+
  <table class="table" align="center ml-3 pl-3">
     <thead>
     <tr align="center">
@@ -86,8 +88,8 @@
     <td>{{ fm.Products }}</td>
     <td>{{ fm.Reason }}</td>
 
-      <td> <a href="/accept/{{fm.id}}/1">Accept</a>
-        <a href="/reject/{{fm.id}}/1">Reject</a></td>
+      <td> <a name='accept' value='accept' href="/accept/{{fm.id}}/1">Accept</a>
+        <a name='accept' value='accept' href="/reject/{{fm.id}}/1">Reject</a></td>
 </tr>
 {% endfor %}
 
@@ -102,8 +104,8 @@
     <td>{{fm.application}}</td>
     <td>{{ fm.Reason }}</td>
     
-      <td> <a href="/accept/{{fm.id}}/2">Accept</a>
-        <a href="/reject/{{fm.id}}/2">Reject</a></td>
+      <td> <a name='accept' value='accept' href="/accept/{{fm.id}}/2">Accept</a>
+        <a  name='accept' value='accept' href="/reject/{{fm.id}}/2">Reject</a></td>
 </tr>
 {% endfor %}
 
@@ -115,11 +117,11 @@
     <td>{{ fm.employee_name }}</td>
     <td>{{ fm.booking }}</td>
     <td>{{ fm.Reason }}</td>
-    <td> <a href="/accept/{{fm.id}}/3">Accept</a>
-        <a href="/reject/{{fm.id}}/3">Reject</a></td>
-   
+    <td> <a name='accept' value='accept' href="/accept/{{fm.id}}/3">Accept</a>
+        <a name='accept' value='accept' href="/reject/{{fm.id}}/3">Reject</a></td>
+ {% endfor %}
 </tr>
-{% endfor %}
+
 
 </table>
 
