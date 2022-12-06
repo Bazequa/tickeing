@@ -109,15 +109,21 @@ def manager(request):
 
 def reject(request,id, model):
     if model==1:
-        rpm=ProductsModel.objects.GET.get(id=id)
+        rpm=ProductsModel.objects.get(id=id)
+        rpm.reject_status=1
+        rpm.save()
         # reject=self.request.POST.get('reject')
         # reject=request.session[id]
     if model == 2:
         ram = ApplicationsModel.objects.get(id=id)
+        ram.reject_status=1
+        ram.save()
         # reject = self.request.POST.get('reject')
         # reject=request.session[id]
     if model == 3:
         rbm = BookingsModel.objects.get(id=id)
+        rbm.reject_status=1
+        rbm.save()
         # reject=self.request.POST.get('reject')
         # reject=request.session[id]
     return HttpResponseRedirect('/manager')
@@ -125,14 +131,20 @@ def reject(request,id, model):
 def accept(request,id,model):
     if model == 1:
         apm =ProductsModel.objects.get(id=id)
+        apm.accept_status=1
+        apm.save()
         # accept=self.request.POST.get('accept')
         # accept = request.session[id]
     if model == 2:
         aam=ApplicationsModel.objects.get(id=id)
+        aam.accept_status=1
+        aam.save()
         # accept=self.request.POST.get('accept')
         # accept=request.session[id]
     if model == 3:
         abm=BookingsModel.objects.get(id=id)
+        abm.accept_status=1
+        abm.save()
         # accept=self.request.POST.get('accept')
         # accept=request.session[id]
     return HttpResponseRedirect('/manager')
@@ -142,18 +154,14 @@ def admin(request):
     afm=ApplicationsModel.objects.all()
     bfm=BookingsModel.objects.all()
     id = 'pending'
-    print(request.session.get(id))
-    if request.session.get(id)=='rpm':
+    print(pfm)
+    print(afm)
+    print(bfm)
+    if pfm=='1':
             id.replace('reject')
-    elif request.session.get(id)=='ram':
+    if afm=='1':
             id.replace('reject')
-    elif request.session.get(id) == 'rbm':
+    if bfm == '1':
             id.replace('reject')
-    elif request.session.get(id)=='apm':
-            id.replace('accept')
-    elif request.session.get(id)=='aam':
-            id.replace('accept')
-    elif request.session.get(id)=='abm':
-            id.replace('accept')
     context={'pfm':pfm,'afm':afm,'bfm':bfm,'id':id}
     return render(request,'admin.html', context )
