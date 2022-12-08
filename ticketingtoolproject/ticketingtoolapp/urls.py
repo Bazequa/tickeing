@@ -12,12 +12,13 @@ urlpatterns = [
     path('products',views.products,name='products'),
     path('application',views.application,name='application'),
     path('booking',views.booking,name='booking'),
+    path('stationary',views.stationary,name='stationary'),
 
     path('sign/',views.signup,name="signup"),
     path('logout/',views.ulogout,name="logout"),
-
-    path('accept/<int:id>/<str:model>',views.accept,name='accept'),
-    path('reject/<int:id>/<str:model>',views.reject,name='reject'),
+    # path('delete/<int:id>/<int:model>',views.tdelete,name='delete'),
+    path('accept/<int:id>/<int:model>',views.accept,name='accept'),
+    path('reject/<int:id>/<int:model>',views.reject,name='reject'),
 ]
 
 

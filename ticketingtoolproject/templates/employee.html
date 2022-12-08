@@ -1,23 +1,4 @@
 {% include 'base.html' %}
-{% comment %} 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>employee</title>
-</head>
-<body>
-<form>
-  
-    <a class="" href="{% url 'products' %}">PRODUCTS</a><br>
-    <a href="{% url 'booking' %}">BOOKING</a><br>
-    <a href="{% url 'application' %}">APPLICATION</a><br>
-</form>
-</body>
-</html> 
-{% endcomment %}
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,78 +29,69 @@
     <a  class="p-5" href="{% url 'products' %}">PRODUCTS</a></hr>
     <a  class="p-5" href="{% url 'booking' %}">BOOKING</a><hr>
     <a  class="p-5" href="{% url 'application' %}">APPLICATION</a><hr>
-   
+    <a  class="p-5" href="{% url 'stationary' %}">STATIONARY</a><hr>
 </div>
-{% comment %} {% if user.fm.employee_name %} {% endcomment %}
+
 
 <table class="table" align="center ml-3 pl-3">
     <thead>
     <tr align="center">
-        {% comment %} <th>id</th> {% endcomment %}
-        {% comment %} <th>employeeId</th>
-        <th>employee_name</th> {% endcomment %}
-        <th>Products/booking/Application</th>
+      
+        <th>Requirement</th>
         <th>Reason</th>
+        <th>Time</th>
         <th>Status</th>
+        
       
     </tr></thead>
 
     {% for fm in pfm %}
-    {% comment %} {{user}} {{fm.user}} {% endcomment %}
     {% if user == fm.user %}
 <tr align="center">
-    {% comment %} <td>{{fm.id}}</td> {% endcomment %}
-    {% comment %} <td>{{ fm.employee_id}}</td>
-    <td>{{ fm.employee_name }}</td> {% endcomment %}
-    <td>{{ fm.Products }}</td>
+    <td>{{ fm.your_requirement }}</td>
     <td>{{ fm.Reason }}</td>
-
-      <td> <a>pending</a>
-        <a href="/reject/{{fm.id}}/3">delete</a></td>
+    <td>{{fm.request_raised_at}}</td>
+    <td>{{id}}</td>        
+    <!-- <a href="/delete/{{fm.id}}/ProductsModel">delete</a></td> -->
 </tr>
 {% endif %}
 {% endfor %}
-
-
-
-
     {% for fm in afm %}
-    {% comment %} {{user}} {{fm.user}} {% endcomment %}
     {% if user == fm.user %}
 <tr align="center">
-    {% comment %} <td>{{fm.id}}</td> {% endcomment %}
-    {% comment %} <td>{{ fm.employee_id }}</td>
-    <td>{{ fm.employee_name }}</td> {% endcomment %}
-    <td>{{fm.application}}</td>
+
+    <td>{{fm.your_requirement}}</td>
     <td>{{ fm.Reason }}</td>
-    
-      <td> <a>pending</a>
-        <a href="/reject/{{fm.id}}/3">delete</a></td>
+    <td>{{fm.request_raised_at}}</td>
+    <td>{{id}}</td>
+        <!-- <a href="/delete/{{fm.id}}/ApplicationModel">delete</a></td> -->
 </tr>
 {% endif %}
 {% endfor %}
-
-
     {% for fm in bfm %}
-    {% comment %} {{user}} {{fm.user}} {% endcomment %}
     {% if user == fm.user %}
 <tr align="center">
-    {% comment %} <td>{{fm.id}}</td> {% endcomment %}
-    {% comment %} <td>{{ fm.employee_id }}</td>
-    <td>{{ fm.employee_name }}</td> {% endcomment %}
-    <td>{{ fm.booking }}</td>
+    <td>{{ fm.your_requirement }}</td>
     <td>{{ fm.Reason }}</td>
-
-    <td> <a>pending</a>
-        <a href="/reject/{{fm.id}}/3">delete</a></td>
-   
+    <td>{{fm.request_raised_at}}</td>
+    <td>{{id}}</td>
+        <!-- <a href="/delete/{{fm.id}}/BookingsModel">delete</a></td> -->
 </tr>
 {% endif %}
 {% endfor %}
 
+{% for fm in sfm %}
+    {% if user == fm.user %}
+<tr align="center">
+    <td>{{ fm.your_requirement }}</td>
+    <td>{{ fm.Reason }}</td>
+    <td>{{fm.request_raised_at}}</td>
+    <td>{{id}}</td>
+        <!-- <a href="/delete/{{fm.id}}/BookingsModel">delete</a></td> -->
+</tr>
+{% endif %}
+{% endfor %}
 </table>
-{% comment %} {% endif%} {% endcomment %}
-
 </form>
 </body>
 </html>

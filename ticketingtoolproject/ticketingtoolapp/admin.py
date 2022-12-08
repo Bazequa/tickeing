@@ -1,22 +1,24 @@
 from django.contrib import admin
-from ticketingtoolapp.models import ProductsModel,ApplicationsModel,BookingsModel
+from ticketingtoolapp.models import ProductModel,ApplicationModel,BookingModel,StationaryModel
 # from ticketingtoolapp.models import Employee,Manager,AdminPage
 # from ticketingtoolapp.models import Org
 # Register your models here.
 
-@admin.register(ProductsModel)
+@admin.register(ProductModel)
 class ProductsAdmin(admin.ModelAdmin):
-    list_display = ['id','employee_id','employee_name','Products','Reason']
+    list_display = ['id','employee_id','employee_name','your_requirement','Reason','request_raised_at']
 
-@admin.register(ApplicationsModel)
+@admin.register(ApplicationModel)
 class ApplicationsAdmin(admin.ModelAdmin):
-    list_display = ['id','employee_id','employee_name','application','Reason']
+    list_display = ['id','employee_id','employee_name','your_requirement','Reason','request_raised_at']
 
-@admin.register(BookingsModel)
+@admin.register(BookingModel)
 class BookingsAdmin(admin.ModelAdmin):
-    list_display = ['id','employee_id','employee_name','booking','Reason']
+    list_display = ['id','employee_id','employee_name','your_requirement','Reason','request_raised_at']
 
-
+@admin.register(StationaryModel)
+class StationaryAdmin(admin.ModelAdmin):
+    list_display = ['id','employee_id','employee_name','your_requirement','Reason','request_raised_at']
 
 # @admin.register(Employee)
 # class EmployeeAdmin(admin.ModelAdmin):

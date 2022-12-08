@@ -24,49 +24,7 @@
     <div class="ram">
 
  <h1>Welcome {{user}}</h1>
- {% comment %} <table class="ram">
-    <tr>
-    {% for fm in pfm %}
-    <th>Products</th>
-    <td>{{fm.employee_id}}</td>
-    <td>{{fm.employee_name}}</td>
-    <td>{{fm.Products}}</td>
-    {{fm.Reason}}<br>
-    <div class="dflex flex-row">
-    <td> <button name='accept' value='accept' href="/accept/{{fm.id}}/1">Accept</button>
-        <button name='accept' value='accept' href="/reject/{{fm.id}}/1">Reject</button></td>
-    </div>
-    {% endfor %}
-</tr>
- </table>
-<table class="ram">
-    {% for fm in afm %}
-    <th>Appilication</th>
-    <td>{{fm.employee_id}}</td>
-    <td>{{fm.employee_name}}</td>
-    <td>{{fm.application}}</td>
-    {{fm.Reason}}<br>
-    <div class="dflex flex-row">
-    <td> <button name='accept' value='accept' href="/accept/{{fm.id}}/1">Accept</button>
-        <button name='accept' value='accept' href="/reject/{{fm.id}}/1">Reject</button></td>
-    </div>
-    {% endfor %}
-</table>
-
-<table class="ram">
-    {% for fm in bfm %}
-    <th>Booking</th>
-    <td>{{fm.employee_id}}</td>
-    <td>{{fm.employee_name}}</td>
-    <td>{{fm.booking}}</td>
-    {{fm.Reason}}<br>
-    <div class="dflex flex-row">
-    <td> <button name='accept' value='accept' href="/accept/{{fm.id}}/1">Accept</button>
-        <button name='accept' value='accept' href="/reject/{{fm.id}}/1">Reject</button></td>
-    {% endfor %}
-    </div>
- </table> {% endcomment %}
-
+ 
 
  <table class="table" align="center ml-3 pl-3">
     <thead>
@@ -74,8 +32,10 @@
         {% comment %} <th>id</th> {% endcomment %}
         <th>employeeId</th>
         <th>employee_name</th>
-        <th>Products/booking/Application</th>
+        <th>Requirement</th>
         <th>Reason</th>
+        <th>Time</th>
+        <th>Action</th>
         <th>Status</th>
       
     </tr></thead>
@@ -85,10 +45,13 @@
     {% comment %} <td>{{fm.id}}</td> {% endcomment %}
     <td>{{ fm.employee_id}}</td>
     <td>{{ fm.employee_name }}</td>
-    <td>{{ fm.Products }}</td>
+    <td>{{ fm.your_requirement }}</td>
     <td>{{ fm.Reason }}</td>
+    <td>{{fm.request_raised_at}}</td>
       <td> <a name='accept' value='accept' href="/accept/{{fm.id}}/1">Accept</a>
           <a name='accept' value='accept' href="/reject/{{fm.id}}/1">Reject</a>
+          </td>
+          <td>{{id}}</td>
 </tr>
 {% endfor %}
 
@@ -100,11 +63,12 @@
     {% comment %} <td>{{fm.id}}</td> {% endcomment %}
     <td>{{ fm.employee_id }}</td>
     <td>{{ fm.employee_name }}</td>
-    <td>{{fm.application}}</td>
+    <td>{{fm.your_requirement}}</td>
     <td>{{ fm.Reason }}</td>
-    
+    <td>{{fm.request_raised_at}}</td>
       <td> <a name='accept' value='accept' href="/accept/{{fm.id}}/2">Accept</a>
         <a  name='accept' value='accept' href="/reject/{{fm.id}}/2">Reject</a></td>
+        <td>{{id}}</td>
 </tr>
 {% endfor %}
 
@@ -114,12 +78,30 @@
     {% comment %} <td>{{fm.id}}</td> {% endcomment %}
     <td>{{ fm.employee_id }}</td>
     <td>{{ fm.employee_name }}</td>
-    <td>{{ fm.booking }}</td>
+    <td>{{ fm.your_requirement }}</td>
     <td>{{ fm.Reason }}</td>
+    <td>{{fm.request_raised_at}}</td>
     <td> <a name='accept' value='accept' href="/accept/{{fm.id}}/3">Accept</a>
         <a name='accept' value='accept' href="/reject/{{fm.id}}/3">Reject</a></td>
+        <td>{{id}}</td>
+        </tr>
  {% endfor %}
-</tr>
+
+
+ {% for fm in sfm %}
+<tr align="center">
+    {% comment %} <td>{{fm.id}}</td> {% endcomment %}
+    <td>{{ fm.employee_id }}</td>
+    <td>{{ fm.employee_name }}</td>
+    <td>{{ fm.your_requirement }}</td>
+    <td>{{ fm.Reason }}</td>
+    <td>{{fm.request_raised_at}}</td>
+    <td> <a name='accept' value='accept' href="/accept/{{fm.id}}/4">Accept</a>
+        <a name='accept' value='accept' href="/reject/{{fm.id}}/4">Reject</a></td>
+        <td>{{id}}</td>
+    </tr>
+ {% endfor %}
+
 
 
 </table>

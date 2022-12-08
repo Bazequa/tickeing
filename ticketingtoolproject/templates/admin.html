@@ -11,25 +11,25 @@
 <table class="table" align="center ml-3 pl-3">
     <thead>
     <tr align="center">
-        {% comment %} <th>id</th> {% endcomment %}
         <th>employeeId</th>
         <th>employee_name</th>
-        <th>Products/booking/Application</th>
+        <th>Requirement</th>
         <th>Reason</th>
+        <th>Time</th>
         <th>Status</th>
-
-    </tr></thead>
+        <th>Completion</th>
+    </tr>
+  </thead>
 
     {% for fm in pfm %}
 <tr align="center">
-    {% comment %} <td>{{fm.id}}</td> {% endcomment %}
     <td>{{ fm.employee_id}}</td>
     <td>{{ fm.employee_name }}</td>
-    <td>{{ fm.Products }}</td>
+    <td>{{ fm.your_requirement }}</td>
     <td>{{ fm.Reason }}</td>
-
-      <td> <a>{{id}}</a>
-        <a href="/reject/{{fm.id}}/1">Complete</a></td>
+    <td>{{fm.request_raised_at}}</td>
+      <td> <a>{{id}}</a></td>
+      <td><a href="/complete/{{fm.id}}/1">Complete</a></td>
 </tr>
 {% endfor %}
 
@@ -38,27 +38,39 @@
 
     {% for fm in afm %}
 <tr align="center">
-    {% comment %} <td>{{fm.id}}</td> {% endcomment %}
     <td>{{ fm.employee_id }}</td>
     <td>{{ fm.employee_name }}</td>
-    <td>{{fm.application}}</td>
+    <td>{{fm.your_requirement}}</td>
     <td>{{ fm.Reason }}</td>
-
-      <td> <a>{{id}}</a>
-        <a href="/reject/{{fm.id}}/2">Complete</a></td>
+    <td>{{fm.request_raised_at}}</td>
+      <td> <a>{{id}}</a></td>
+        <td> <a href="/complete/{{fm.id}}/2">Complete</a></td>
 </tr>
 {% endfor %}
 
 
     {% for fm in bfm %}
 <tr align="center">
-    {% comment %} <td>{{fm.id}}</td> {% endcomment %}
     <td>{{ fm.employee_id }}</td>
     <td>{{ fm.employee_name }}</td>
-    <td>{{ fm.booking }}</td>
+    <td>{{ fm.your_requirement }}</td>
     <td>{{ fm.Reason }}</td>
-    <td> <a>{{id}}</a>
-        <a href="/reject/{{fm.id}}/3">Complete</a></td>
+    <td>{{fm.request_raised_at}}</td>
+    <td> <a>{{id}}</a></td>
+    <td><a href="/complete/{{fm.id}}/3">Complete</a></td>
+
+</tr>
+{% endfor %}
+
+{% for fm in sfm %}
+<tr align="center">
+    <td>{{ fm.employee_id }}</td>
+    <td>{{ fm.employee_name }}</td>
+    <td>{{ fm.your_requirement }}</td>
+    <td>{{ fm.Reason }}</td>
+    <td>{{fm.request_raised_at}}</td>
+    <td> <a>{{id}}</a></td>
+    <td><a href="/complete/{{fm.id}}/4">Complete</a></td>
 
 </tr>
 {% endfor %}
